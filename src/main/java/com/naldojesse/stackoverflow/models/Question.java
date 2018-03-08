@@ -36,22 +36,6 @@ public class Question implements java.io.Serializable{
 
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public List<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
-    }
-
     public Long getId() {
         return id;
     }
@@ -62,6 +46,31 @@ public class Question implements java.io.Serializable{
 
     public Date getUpdatedAt() {
         return updatedAt;
+    }
+
+    public String getQuestion() {
+
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public Set<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 
     @PrePersist
