@@ -1,10 +1,12 @@
 package com.naldojesse.stackoverflow.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+//class NotUniqueSubjectException extends Exception{}
 
 @Entity
 @Table(name="tags")
@@ -12,7 +14,8 @@ public class Tag implements java.io.Serializable{
     @Id
     @GeneratedValue
     private Long id;
-    private String tag;
+    @Column(unique=true)
+    private String subject;
     @Column(updatable = false)
     private Date createdAt;
     private Date updatedAt;
@@ -21,6 +24,11 @@ public class Tag implements java.io.Serializable{
 
     public Tag() {
 
+    }
+
+    public Tag(String subject) {
+        this.subject = subject;
+//        throw new NotUniqueSubjectException();
     }
 
     public Date getCreatedAt() {
@@ -40,12 +48,13 @@ public class Tag implements java.io.Serializable{
         this.id = id;
     }
 
-    public String getTag() {
-        return tag;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setSubject(String subject) {
+        System.out.println("setting the subject");
+        this.subject = subject;
     }
 
     public Set<Question> getQuestions() {

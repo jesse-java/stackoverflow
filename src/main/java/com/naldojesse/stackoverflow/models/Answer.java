@@ -1,6 +1,7 @@
 package com.naldojesse.stackoverflow.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
@@ -10,12 +11,14 @@ public class Answer implements java.io.Serializable{
     @Id
     @GeneratedValue
     private Long id;
+    @NotNull(message="Answer field must not be null")
     private String answer;
     @Column(updatable = false)
     private Date createdAt;
     private Date updatedAt;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="question_id")
+    @NotNull
     private Question question;
 
     public Answer() {

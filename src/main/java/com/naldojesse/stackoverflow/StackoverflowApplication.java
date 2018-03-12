@@ -18,7 +18,7 @@ public class StackoverflowApplication {
 
 	@RequestMapping("/")
 	public String index()  {
-		return "index.jsp";
+		return "redirect:/questions";
 	}
 
 }

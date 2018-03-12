@@ -1,6 +1,8 @@
 package com.naldojesse.stackoverflow.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -29,6 +31,7 @@ public class Question implements java.io.Serializable{
             joinColumns = @JoinColumn(name="question_id"),
             inverseJoinColumns = @JoinColumn(name="tag_id")
     )
+    @Size(max=3)
     private Set<Tag> tags = new HashSet<>();
 
 
